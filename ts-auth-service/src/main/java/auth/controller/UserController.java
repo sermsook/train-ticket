@@ -35,6 +35,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<Response> getToken(@RequestBody BasicAuthDto dao , @RequestHeader HttpHeaders headers) {
+
         return ResponseEntity.ok(tokenService.getToken(dao, headers));
     }
 

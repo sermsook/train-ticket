@@ -9,6 +9,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import user.dto.AuthDto;
+import user.dto.BasicAuthDto;
 import user.dto.UserDto;
 import user.entity.User;
 import user.repository.UserRepository;
@@ -151,4 +152,19 @@ public class UserServiceImpl implements UserService {
                 Response.class);
         LOGGER.info("DELETE USER AUTH SUCCESS");
     }
+
+    public void loginUserAuth(HttpHeaders headers) {
+        BasicAuthDto loginRequest = new BasicAuthDto();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("username");
+        loginRequest.setVerificationCode("ABCD");
+
+        HttpEntity<Response> requestEntity = new HttpEntity(loginRequest, headers);
+        restTemplate.exchange(AUTH_SERVICE_URI + "/users/login",
+                HttpMethod.POST,
+                requestEntity,
+                Response.class);
+        LOGGER.info("DELETE USER AUTH SUCCESS");
+    }
+
 }
