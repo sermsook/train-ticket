@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private RestTemplate restTemplate = new RestTemplate();
-    private static final String ADMIN_USER_SERVICE_URI = "http://ts-admin-user-service:16115";
+    private static final String ADMIN_USER_SERVICE_URI = "http://ts-admin-user-service:16115/api/v1/adminuserservice/users";
 
     /**
      * create  a user with default role of user
