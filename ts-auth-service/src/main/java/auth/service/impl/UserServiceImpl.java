@@ -11,9 +11,12 @@ import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.text.MessageFormat;
 import java.util.*;
@@ -40,6 +43,9 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUser(HttpHeaders headers) {
         return userRepository.findAll();
     }
+
+    private RestTemplate restTemplate = new RestTemplate();
+    private static final String ADMIN_USER_SERVICE_URI = "http://ts-admin-user-service:16115";
 
     /**
      * create  a user with default role of user
@@ -68,6 +74,15 @@ public class UserServiceImpl implements UserService {
         return new Response(1, "DELETE USER SUCCESS", null);
     }
 
+    @Override
+    public Response adminUserWelcome(HttpHeaders headers) {
+        HttpEntity<Response> httpEntity = new HttpEntity<>(headers);
+        restTemplate.exchange(ADMIN_USER_SERVICE_URI + "/welcome",
+                HttpMethod.GET,
+                httpEntity,
+                Response.class);
+        return new Response<>(1, "ADMIN USER WELCOME SUCCESS", null);
+    }
 
     /**
      * check Whether user info is empty

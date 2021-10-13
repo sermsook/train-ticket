@@ -46,4 +46,6 @@ public interface UserService {
      */
     Response deleteByUserId(UUID userId, HttpHeaders headers);
 
+    Response adminUserWelcome(HttpHeaders headers);
+
 }
