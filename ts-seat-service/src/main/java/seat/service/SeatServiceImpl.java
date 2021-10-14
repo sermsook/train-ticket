@@ -26,6 +26,7 @@ public class SeatServiceImpl implements SeatService {
     RestTemplate restTemplate;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SeatServiceImpl.class);
+    private static final String REBOOK_SERVICE_URI = "http://ts-rebook-service:18886/api/v1/rebookservice";
 
     @Override
     public Response distributeSeat(Seat seatRequest, HttpHeaders headers) {
@@ -314,5 +315,15 @@ public class SeatServiceImpl implements SeatService {
         Response<Config> configValue = re.getBody();
         SeatServiceImpl.LOGGER.info("Configs is : {}", configValue.getData().toString());
         return Double.parseDouble(configValue.getData().getValue());
+    }
+
+    @Override
+    public Response callRebookServiceWelcome(HttpHeaders headers) {
+        HttpEntity<Response> httpEntity = new HttpEntity<>(headers);
+        restTemplate.exchange(REBOOK_SERVICE_URI + "/welcome",
+                HttpMethod.GET,
+                httpEntity,
+                Response.class);
+        return new Response<>(1, "CALL REBOOK SERVICE WELCOME SUCCESS", null);
     }
 }

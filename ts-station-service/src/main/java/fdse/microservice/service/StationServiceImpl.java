@@ -4,8 +4,13 @@ import edu.fudan.common.util.Response;
 import fdse.microservice.entity.*;
 import fdse.microservice.repository.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,9 @@ public class StationServiceImpl implements StationService {
 
     @Autowired
     private StationRepository repository;
+
+    private RestTemplate restTemplate = new RestTemplate();
+    private static final String ORDER_OTHER_SERVICE_URI = "http://ts-order-other-service:12032/api/v1/orderOtherService";
 
     String success = "Success";
 
@@ -131,5 +139,15 @@ public class StationServiceImpl implements StationService {
             return new Response<>(0, "No stationNamelist according to stationIdList", result);
         }
 
+    }
+
+    @Override
+    public Response callOrderOtherServiceWelcome(HttpHeaders headers) {
+        HttpEntity<Response> httpEntity = new HttpEntity<>(headers);
+        restTemplate.exchange(ORDER_OTHER_SERVICE_URI + "/welcome",
+                HttpMethod.GET,
+                httpEntity,
+                Response.class);
+        return new Response<>(1, "CALL ORDER OTHER SERVICE WELCOME SUCCESS", null);
     }
 }

@@ -26,4 +26,6 @@ public interface StationService {
 
     Response queryByIdBatch(List<String> stationIdList, HttpHeaders headers);
 
+    Response callOrderOtherServiceWelcome(HttpHeaders headers);
+
 }
