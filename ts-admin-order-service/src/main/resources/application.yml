@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: ts-admin-order-service
+  data:
+    mongodb:
+      host: ts-travel-mongo
+      database: ts
+      port: 27017
 
 
 swagger:
