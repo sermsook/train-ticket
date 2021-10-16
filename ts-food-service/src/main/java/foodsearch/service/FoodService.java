@@ -18,4 +18,6 @@ public interface FoodService {
 
     Response getAllFood(String date, String startStation, String endStation, String tripId, HttpHeaders headers);
 
+    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
+
 }

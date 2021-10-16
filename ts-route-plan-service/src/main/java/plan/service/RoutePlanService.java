@@ -36,4 +36,6 @@ public interface RoutePlanService {
      */
     Response searchMinStopStations(RoutePlanInfo info, HttpHeaders headers);
 
+    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
+
 }

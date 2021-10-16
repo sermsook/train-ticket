@@ -65,4 +65,9 @@ public class FoodController {
         return ok(foodService.getAllFood(date, startStation, endStation, tripId, headers));
     }
 
+    @GetMapping(value = "/test/esbusage/callfoodmap")
+    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
+        return ok(foodService.callFoodMapServiceTestESBUsage(headers));
+    }
+
 }

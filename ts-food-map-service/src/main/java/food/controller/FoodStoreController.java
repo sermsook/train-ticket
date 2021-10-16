@@ -45,4 +45,15 @@ public class FoodStoreController {
     public HttpEntity getFoodStoresByStationIds(@RequestBody List<String> stationIdList) {
         return ok(foodMapService.getFoodStoresByStationIds(stationIdList));
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/test/esbusage")
+    public HttpEntity getFoodStoresByStationIds(@RequestHeader HttpHeaders headers) {
+        foodMapService.callNotificationServiceWelcome(headers);
+        foodMapService.callCancelServiceWelcome(headers);
+        foodMapService.callConfigServiceWelcome(headers);
+        foodMapService.callAssuranceServiceWelcome(headers);
+        foodMapService.callPriceServiceWelcome(headers);
+        return ok(foodMapService.callSecurityServiceWelcome(headers));
+    }
 }

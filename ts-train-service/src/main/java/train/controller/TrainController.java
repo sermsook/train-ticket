@@ -80,4 +80,9 @@ public class TrainController {
             return ok(new Response(0, "no content", trainTypes));
         }
     }
+
+    @GetMapping(value = "/test/esbusage/callfoodmap")
+    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
+        return ok(trainService.callFoodMapServiceTestESBUsage(headers));
+    }
 }

@@ -6,8 +6,12 @@ import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author fdse
@@ -17,6 +21,9 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
 
     @Autowired
     private ConsignPriceConfigRepository repository;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     String success = "Success";
 
@@ -79,5 +86,16 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
     @Override
     public Response getPriceConfig(HttpHeaders headers) {
         return new Response<>(1, success, repository.findByIndex(0));
+    }
+
+    @Override
+    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
     }
 }

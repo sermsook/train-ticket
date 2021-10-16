@@ -17,7 +17,7 @@ import static org.springframework.http.ResponseEntity.ok;
  * @date 2017/5/11.
  */
 @RestController
-@RequestMapping("api/v1/configservice")
+@RequestMapping("/api/v1/configservice")
 public class ConfigController {
 
     @Autowired

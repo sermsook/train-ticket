@@ -8,8 +8,12 @@ import food.repository.TrainFoodRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -22,6 +26,9 @@ public class FoodMapServiceImpl implements FoodMapService {
 
     @Autowired
     TrainFoodRepository trainFoodRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FoodMapServiceImpl.class);
 
@@ -99,5 +106,71 @@ public class FoodMapServiceImpl implements FoodMapService {
         } else {
             return new Response<>(0, noContent, null);
         }
+    }
+
+    @Override
+    public Response callNotificationServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-notification-service:17853/api/v1/notifyservice/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
+
+    @Override
+    public Response callCancelServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-cancel-service:18885/api/v1/cancelservice/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
+
+    @Override
+    public Response callConfigServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-config-service:15679/api/v1/configservice/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
+
+    @Override
+    public Response callAssuranceServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-assurance-service:18888/api/v1/assuranceservice/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
+
+    @Override
+    public Response callPriceServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-price-service:16579/api/v1/priceservice/prices/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
+
+    @Override
+    public Response callSecurityServiceWelcome(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-security-service:11188/api/v1/securityservice/welcome",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
     }
 }

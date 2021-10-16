@@ -45,4 +45,9 @@ public class RoutePlanController {
         return ok(routePlanService.searchMinStopStations(info, headers));
     }
 
+    @GetMapping(value = "/test/esbusage/callfoodmap")
+    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
+        return ok(routePlanService.callFoodMapServiceTestESBUsage(headers));
+    }
+
 }

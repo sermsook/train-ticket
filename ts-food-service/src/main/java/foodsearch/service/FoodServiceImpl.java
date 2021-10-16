@@ -225,4 +225,15 @@ public class FoodServiceImpl implements FoodService {
         allTripFood.setFoodStoreListMap(foodStoreListMap);
         return new Response<>(1, "Get All Food Success", allTripFood);
     }
+
+    @Override
+    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
+    }
 }

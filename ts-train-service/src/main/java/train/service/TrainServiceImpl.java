@@ -1,8 +1,13 @@
 package train.service;
 
+import edu.fudan.common.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import train.entity.TrainType;
 import train.repository.TrainTypeRepository;
 
@@ -13,6 +18,9 @@ public class TrainServiceImpl implements TrainService {
 
     @Autowired
     private TrainTypeRepository repository;
+
+    @Autowired
+    RestTemplate restTemplate;
 
 
     @Override
@@ -61,6 +69,17 @@ public class TrainServiceImpl implements TrainService {
     @Override
     public List<TrainType> query(HttpHeaders headers) {
         return repository.findAll();
+    }
+
+    @Override
+    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
     }
 
 }

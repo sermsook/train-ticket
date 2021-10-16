@@ -2,10 +2,16 @@ package verifycode.service.impl;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import verifycode.service.VerifyCodeService;
 import verifycode.util.CookieUtil;
 
@@ -29,6 +35,9 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 
     public static final int CAPTCHA_EXPIRED = 1000;
     private static final Logger LOGGER = LoggerFactory.getLogger(VerifyCodeServiceImpl.class);
+
+    @Autowired
+    RestTemplate restTemplate;
 
     String ysbCaptcha = "YsbCaptcha";
 
@@ -144,6 +153,17 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
         return new Color(r, g, b);
+    }
+
+    @Override
+    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        return re.getBody();
     }
 
 }

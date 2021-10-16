@@ -56,4 +56,6 @@ public interface ConsignService {
      * @return Response
      */
     Response queryByConsignee(String consignee, HttpHeaders headers);
+
+    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
 }

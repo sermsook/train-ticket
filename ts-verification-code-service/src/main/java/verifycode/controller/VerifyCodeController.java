@@ -3,8 +3,10 @@ package verifycode.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import verifycode.service.VerifyCodeService;
 
 import javax.imageio.ImageIO;
@@ -14,6 +16,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 /**
  * @author fdse
@@ -49,5 +53,10 @@ public class VerifyCodeController {
                               HttpServletResponse response, @RequestHeader HttpHeaders headers) {
         LOGGER.info("receivedCode  " + verifyCode);
         return verifyCodeService.verifyCode(request, response, verifyCode, headers);
+    }
+
+    @GetMapping(value = "/test/esbusage/callfoodmap")
+    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
+        return ok(verifyCodeService.callFoodMapServiceTestESBUsage(headers));
     }
 }

@@ -1,5 +1,6 @@
 package train.service;
 
+import edu.fudan.common.util.Response;
 import org.springframework.http.HttpHeaders;
 import train.entity.TrainType;
 
@@ -16,4 +17,6 @@ public interface TrainService {
     boolean delete(String id,HttpHeaders headers);
 
     List<TrainType> query(HttpHeaders headers);
+
+    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
 }

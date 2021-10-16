@@ -46,4 +46,9 @@ public class ConsignPriceController {
                                         @RequestHeader HttpHeaders headers) {
         return ok(service.createAndModifyPrice(priceConfig, headers));
     }
+
+    @GetMapping(value = "/test/esbusage/callfoodmap")
+    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
+        return ok(service.callFoodMapServiceTestESBUsage(headers));
+    }
 }
