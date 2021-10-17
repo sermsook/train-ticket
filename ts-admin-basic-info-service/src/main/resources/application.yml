@@ -4,12 +4,6 @@ server:
 spring:
   application:
     name: ts-admin-basic-info-service
-  datasource:
-    url: jdbc:mysql://test:3306/adminbasic?zeroDateTimeBehavior=convertToNull
-    username: test
-    password: test
-    port: 3306
-    database: adminbasic
 
 swagger:
   controllerPackage: adminbasic.microservice
