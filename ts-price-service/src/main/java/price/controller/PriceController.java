@@ -20,7 +20,7 @@ public class PriceController {
     @Autowired
     PriceService service;
 
-    @GetMapping(path = "/prices/welcome")
+    @GetMapping(path = "/api/v1/prices/welcome")
     public String home() {
         return "Welcome to [ Price Service ] !";
     }

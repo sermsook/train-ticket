@@ -26,7 +26,7 @@ public class ContactsController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContactsController.class);
 
-    @GetMapping(path = "/contacts/welcome")
+    @GetMapping(path = "/api/v1/contacts/welcome")
     public String home() {
         return "Welcome to [ Contacts Service ] !";
     }

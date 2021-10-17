@@ -37,7 +37,7 @@ public class TrainFoodControllerTest {
 
     @Test
     public void testHome() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/foodmapservice/trainfoods/welcome"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/foodmapservice/api/v1/trainfoods/welcome"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Welcome to [ Train Food Service ] !"));
     }

@@ -53,7 +53,7 @@ public class OrderController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping(path = "/order/query")
+    @PostMapping(path = "/api/v1/order/query")
     public HttpEntity queryOrders(@RequestBody OrderInfo qi,
                                   @RequestHeader HttpHeaders headers) {
         OrderController.LOGGER.info("[Order Other Service][Query Orders] Query Orders for {}", qi.getLoginId());

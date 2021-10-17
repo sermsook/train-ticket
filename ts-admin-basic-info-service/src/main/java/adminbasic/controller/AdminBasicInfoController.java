@@ -35,7 +35,7 @@ public class AdminBasicInfoController {
     }
 
     @CrossOrigin(origins = "*")
-    @DeleteMapping(path = "/adminbasic/contacts/{contactsId}")
+    @DeleteMapping(path = "/api/v1/adminbasic/contacts/{contactsId}")
     public HttpEntity deleteContacts(@PathVariable String contactsId, @RequestHeader HttpHeaders headers) {
         AdminBasicInfoController.LOGGER.info("[Admin Basic Info Service][Delete Contacts by admin ");
         return ok(adminBasicInfoService.deleteContact(contactsId, headers));

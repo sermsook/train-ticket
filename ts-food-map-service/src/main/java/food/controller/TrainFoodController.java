@@ -19,7 +19,7 @@ public class TrainFoodController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TrainFoodController.class);
 
-    @GetMapping(path = "/trainfoods/welcome")
+    @GetMapping(path = "/api/v1/trainfoods/welcome")
     public String home() {
         return "Welcome to [ Train Food Service ] !";
     }

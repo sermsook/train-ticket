@@ -40,7 +40,7 @@ public class ContactsControllerTest {
 
     @Test
     public void testHome() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/contactservice/contacts/welcome"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/contactservice/api/v1/contacts/welcome"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Welcome to [ Contacts Service ] !"));
     }

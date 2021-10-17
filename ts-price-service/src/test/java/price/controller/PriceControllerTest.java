@@ -38,7 +38,7 @@ public class PriceControllerTest {
 
     @Test
     public void testHome() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/priceservice/prices/welcome"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/priceservice/api/v1/prices/welcome"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Welcome to [ Price Service ] !"));
     }
