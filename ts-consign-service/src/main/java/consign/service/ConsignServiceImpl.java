@@ -132,15 +132,4 @@ public class ConsignServiceImpl implements ConsignService {
             return new Response<>(0, "No Content according to consignee", null);
         }
     }
-
-    @Override
-    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
-        HttpEntity requestEntity = new HttpEntity(headers);
-        ResponseEntity<Response> re = restTemplate.exchange(
-                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
-                HttpMethod.GET,
-                requestEntity,
-                Response.class);
-        return re.getBody();
-    }
 }

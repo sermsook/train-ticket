@@ -87,15 +87,4 @@ public class ConsignPriceServiceImpl implements ConsignPriceService {
     public Response getPriceConfig(HttpHeaders headers) {
         return new Response<>(1, success, repository.findByIndex(0));
     }
-
-    @Override
-    public Response callFoodMapServiceTestESBUsage(HttpHeaders headers) {
-        HttpEntity requestEntity = new HttpEntity(headers);
-        ResponseEntity<Response> re = restTemplate.exchange(
-                "http://ts-food-map-service:18855/api/v1/foodmapservice/test/esbusage",
-                HttpMethod.GET,
-                requestEntity,
-                Response.class);
-        return re.getBody();
-    }
 }

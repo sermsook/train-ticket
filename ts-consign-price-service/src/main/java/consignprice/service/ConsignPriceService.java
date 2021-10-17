@@ -43,6 +43,4 @@ public interface ConsignPriceService {
      * @return Response
      */
     Response getPriceConfig(HttpHeaders headers);
-
-    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
 }

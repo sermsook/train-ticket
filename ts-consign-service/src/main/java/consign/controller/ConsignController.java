@@ -53,10 +53,4 @@ public class ConsignController {
     public HttpEntity findByConsignee(@PathVariable String consignee, @RequestHeader HttpHeaders headers) {
         return ok(service.queryByConsignee(consignee, headers));
     }
-
-    @GetMapping(value = "/test/esbusage/callfoodmap")
-    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
-        return ok(service.callFoodMapServiceTestESBUsage(headers));
-    }
-
 }

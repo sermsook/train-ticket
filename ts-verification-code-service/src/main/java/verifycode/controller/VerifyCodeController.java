@@ -54,9 +54,4 @@ public class VerifyCodeController {
         LOGGER.info("receivedCode  " + verifyCode);
         return verifyCodeService.verifyCode(request, response, verifyCode, headers);
     }
-
-    @GetMapping(value = "/test/esbusage/callfoodmap")
-    public HttpEntity callFoodMapService(@RequestHeader HttpHeaders headers) {
-        return ok(verifyCodeService.callFoodMapServiceTestESBUsage(headers));
-    }
 }

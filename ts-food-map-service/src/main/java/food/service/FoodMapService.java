@@ -24,11 +24,4 @@ public interface FoodMapService {
     Response listTrainFoodByTripId(String tripId, HttpHeaders headers);
 
     Response getFoodStoresByStationIds(List<String> stationIds);
-
-    Response callNotificationServiceWelcome(HttpHeaders headers);
-    Response callCancelServiceWelcome(HttpHeaders headers);
-    Response callConfigServiceWelcome(HttpHeaders headers);
-    Response callAssuranceServiceWelcome(HttpHeaders headers);
-    Response callPriceServiceWelcome(HttpHeaders headers);
-    Response callSecurityServiceWelcome(HttpHeaders headers);
 }

@@ -17,6 +17,4 @@ public interface VerifyCodeService {
 
     boolean verifyCode(HttpServletRequest request, HttpServletResponse response, String receivedCode, HttpHeaders headers);
 
-    Response callFoodMapServiceTestESBUsage(HttpHeaders headers);
-
 }
