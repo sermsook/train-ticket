@@ -81,7 +81,6 @@ public class StationController {
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/stations/namelist")
     public HttpEntity queryForNameBatch(@RequestBody List<String> stationIdList, @RequestHeader HttpHeaders headers) {
-        stationService.callOrderOtherServiceWelcome(headers);
         return ok(stationService.queryByIdBatch(stationIdList, headers));
     }
 

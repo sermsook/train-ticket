@@ -316,14 +316,4 @@ public class SeatServiceImpl implements SeatService {
         SeatServiceImpl.LOGGER.info("Configs is : {}", configValue.getData().toString());
         return Double.parseDouble(configValue.getData().getValue());
     }
-
-    @Override
-    public Response callRebookServiceWelcome(HttpHeaders headers) {
-        HttpEntity<Response> httpEntity = new HttpEntity<>(headers);
-        restTemplate.exchange(REBOOK_SERVICE_URI + "/welcome",
-                HttpMethod.GET,
-                httpEntity,
-                Response.class);
-        return new Response<>(1, "CALL REBOOK SERVICE WELCOME SUCCESS", null);
-    }
 }

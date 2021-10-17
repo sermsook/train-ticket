@@ -140,14 +140,4 @@ public class StationServiceImpl implements StationService {
         }
 
     }
-
-    @Override
-    public Response callOrderOtherServiceWelcome(HttpHeaders headers) {
-        HttpEntity<Response> httpEntity = new HttpEntity<>(headers);
-        restTemplate.exchange(ORDER_OTHER_SERVICE_URI + "/welcome",
-                HttpMethod.GET,
-                httpEntity,
-                Response.class);
-        return new Response<>(1, "CALL ORDER OTHER SERVICE WELCOME SUCCESS", null);
-    }
 }

@@ -34,7 +34,6 @@ public class SeatController {
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/seats")
     public HttpEntity create(@RequestBody Seat seatRequest, @RequestHeader HttpHeaders headers) {
-        seatService.callRebookServiceWelcome(headers);
         return ok(seatService.distributeSeat(seatRequest, headers));
     }
 
