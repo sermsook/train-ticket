@@ -7,3 +7,7 @@ spring:
 
 swagger:
   controllerPackage: adminuser.controller
+
+adminuser:
+  config:
+    url: http://ts-user-service:12342/api/v1/userservice/users

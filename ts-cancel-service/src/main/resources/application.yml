@@ -7,3 +7,11 @@ spring:
 
 swagger:
   controllerPackage: cancel.controller
+
+cancel:
+  config:
+    notificationserviceurl: http://ts-notification-service:17853/api/v1/notifyservice/notification/order_cancel_success
+    orderserviceurl: http://ts-order-service:12031/api/v1/orderservice/order
+    orderotherserviceurl: http://ts-order-other-service:12032/api/v1/orderOtherService/orderOther
+    userserviceurl: http://ts-user-service:12342/api/v1/userservice/users/id
+    insidepaymentservice: http://ts-inside-payment-service:18673/api/v1/inside_pay_service/inside_payment/drawback

@@ -1,5 +1,6 @@
 package cancel.service;
 
+import cancel.config.CancelProperties;
 import cancel.entity.*;
 import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
@@ -25,6 +26,10 @@ public class CancelServiceImpl implements CancelService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private CancelProperties cancelProperties;
+
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CancelServiceImpl.class);
 
@@ -132,7 +137,7 @@ public class CancelServiceImpl implements CancelService {
         CancelServiceImpl.LOGGER.info("[Cancel Order Service][Send Email]");
         HttpEntity requestEntity = new HttpEntity(notifyInfo, headers);
         ResponseEntity<Boolean> re = restTemplate.exchange(
-                "http://ts-notification-service:17853/api/v1/notifyservice/notification/order_cancel_success",
+                cancelProperties.getNotificationserviceurl(),
                 HttpMethod.POST,
                 requestEntity,
                 Boolean.class);
@@ -226,7 +231,7 @@ public class CancelServiceImpl implements CancelService {
 
         HttpEntity requestEntity = new HttpEntity(order, headers);
         ResponseEntity<Response> re = restTemplate.exchange(
-                "http://ts-order-service:12031/api/v1/orderservice/order",
+                cancelProperties.getOrderserviceurl(),
                 HttpMethod.PUT,
                 requestEntity,
                 Response.class);
@@ -238,7 +243,7 @@ public class CancelServiceImpl implements CancelService {
         CancelServiceImpl.LOGGER.info("[Cancel Order Service][Change Order Status] Changing....");
         HttpEntity requestEntity = new HttpEntity(info, headers);
         ResponseEntity<Response> re = restTemplate.exchange(
-                "http://ts-order-other-service:12032/api/v1/orderOtherService/orderOther",
+                cancelProperties.getOrderotherserviceurl(),
                 HttpMethod.PUT,
                 requestEntity,
                 Response.class);
@@ -251,7 +256,7 @@ public class CancelServiceImpl implements CancelService {
 
         HttpEntity requestEntity = new HttpEntity(headers);
         ResponseEntity<Response> re = restTemplate.exchange(
-                "http://ts-inside-payment-service:18673/api/v1/inside_pay_service/inside_payment/drawback/" + userId + "/" + money,
+                cancelProperties.getInsidepaymentservice() + "/" + userId + "/" + money,
                 HttpMethod.GET,
                 requestEntity,
                 Response.class);
@@ -264,7 +269,7 @@ public class CancelServiceImpl implements CancelService {
         CancelServiceImpl.LOGGER.info("[Cancel Order Service][Get By Id]");
         HttpEntity requestEntity = new HttpEntity( headers);
         ResponseEntity<Response<User>> re = restTemplate.exchange(
-                "http://ts-user-service:12342/api/v1/userservice/users/id/" + orderId,
+                cancelProperties.getUserserviceurl()+ "/"  + orderId,
                 HttpMethod.GET,
                 requestEntity,
                 new ParameterizedTypeReference<Response<User>>() {
@@ -276,7 +281,7 @@ public class CancelServiceImpl implements CancelService {
         CancelServiceImpl.LOGGER.info("[Cancel Order Service][Get Order] Getting....");
         HttpEntity requestEntity = new HttpEntity(headers);
         ResponseEntity<Response<Order>> re = restTemplate.exchange(
-                "http://ts-order-service:12031/api/v1/orderservice/order/" + orderId,
+                cancelProperties.getOrderserviceurl()+ "/" + orderId,
                 HttpMethod.GET,
                 requestEntity,
                 new ParameterizedTypeReference<Response<Order>>() {
@@ -288,7 +293,7 @@ public class CancelServiceImpl implements CancelService {
         CancelServiceImpl.LOGGER.info("[Cancel Order Service][Get Order] Getting....");
         HttpEntity requestEntity = new HttpEntity(  headers);
         ResponseEntity<Response<Order>> re = restTemplate.exchange(
-                "http://ts-order-other-service:12032/api/v1/orderOtherService/orderOther/" + orderId,
+                cancelProperties.getOrderotherserviceurl()+ "/" + orderId,
                 HttpMethod.GET,
                 requestEntity,
                 new ParameterizedTypeReference<Response<Order>>() {

@@ -47,7 +47,7 @@ contactsModule.controller("contactCtrl", function ($scope, $http, loadDataServic
                 // alert(msg);
                 $http({
                     method: "delete",
-                    url: "/api/v1/adminbasicservice/adminbasic/contacts/" + contact.id,
+                    url: "/api/v1/adminbasicservice/api/v1/adminbasic/contacts/" + contact.id,
                     headers: {"Authorization": "Bearer " + sessionStorage.getItem("admin_token")},
                     withCredentials: true
                 }).success(function (data, status, headers, config) {
