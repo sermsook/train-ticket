@@ -1,15 +1,22 @@
 package contacts.service;
 
+import contacts.config.ContactsProperties;
 import contacts.entity.*;
 import edu.fudan.common.util.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import contacts.repository.ContactsRepository;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -21,6 +28,12 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Autowired
     private ContactsRepository contactsRepository;
+
+    @Autowired
+    private ContactsProperties contactsProperties;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     String success = "Success";
 
@@ -119,6 +132,20 @@ public class ContactsServiceImpl implements ContactsService {
             return new Response<>(0, "No content", null);
         }
     }
+
+    @Override
+    public List<String> stationServiceStationsName(String stationName, HttpHeaders headers) {
+
+        HttpEntity requestEntity = new HttpEntity(headers);
+        ResponseEntity<Response<List<String>>> re = restTemplate.exchange(
+                contactsProperties.getUrl()+ "/stations/name/" + stationName,
+                HttpMethod.GET,
+                requestEntity,
+                new ParameterizedTypeReference<Response<List<String>>>() {
+                });
+        return re.getBody().getData();
+    }
+
 
 }
 

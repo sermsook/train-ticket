@@ -39,3 +39,7 @@ spring:
 
 swagger:
   controllerPackage: other.controller
+
+orderother:
+  config:
+    url: http://ts-station-service:12345/api/v1/stationservice

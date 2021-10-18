@@ -12,3 +12,7 @@ spring:
 
 swagger:
   controllerPackage: contacts.controller
+
+contacts:
+  config:
+    url: http://ts-station-service:12345/api/v1/stationservice

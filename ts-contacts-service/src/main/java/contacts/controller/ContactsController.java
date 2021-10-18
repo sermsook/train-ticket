@@ -86,5 +86,11 @@ public class ContactsController {
     }
 
 
+    @CrossOrigin(origins = "*")
+    @GetMapping(path = "/api/v1/test/hardCodeEndpoint")
+    public HttpEntity hardCodeEndpoint(@RequestHeader HttpHeaders headers) {
+        return ok(contactsService.stationServiceStationsName("name", headers));
+    }
+
 
 }

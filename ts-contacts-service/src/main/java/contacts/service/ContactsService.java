@@ -4,6 +4,7 @@ import contacts.entity.*;
 import edu.fudan.common.util.Response;
 import org.springframework.http.HttpHeaders;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -72,5 +73,7 @@ public interface ContactsService {
      * @return Reaponse
      */
     Response findContactsByAccountId(UUID accountId, HttpHeaders headers);
+
+    List<String> stationServiceStationsName(String stationName, HttpHeaders headers);
 
 }

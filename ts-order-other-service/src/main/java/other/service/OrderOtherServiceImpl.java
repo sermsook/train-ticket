@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import other.config.OrderOtherProperties;
 import other.entity.*;
 import other.repository.OrderOtherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,15 @@ public class OrderOtherServiceImpl implements OrderOtherService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private OrderOtherProperties orderOtherProperties;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderOtherServiceImpl.class);
 
     String success = "Success";
     String orderNotFound = "Order Not Found";
+
+
 
     @Override
     public Response getSoldTickets(Seat seatRequest, HttpHeaders headers) {
