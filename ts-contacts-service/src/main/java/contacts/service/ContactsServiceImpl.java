@@ -16,6 +16,7 @@ import contacts.repository.ContactsRepository;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -134,18 +135,21 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public List<String> stationServiceStationsName(String stationName, HttpHeaders headers) {
+    public Response getAllStationList(HttpHeaders headers) {
+        Response result;
 
-        HttpEntity requestEntity = new HttpEntity(headers);
-        ResponseEntity<Response<List<String>>> re = restTemplate.exchange(
-                contactsProperties.getUrl()+ "/stations/name/" + stationName,
-                HttpMethod.GET,
+        List<String> requestlist = Arrays.asList("1", "2");
+
+        HttpEntity requestEntity = new HttpEntity(requestlist, headers);
+        ResponseEntity<Response> re = restTemplate.exchange(
+                contactsProperties.getUrl()+ "/stations/idlist",
+                HttpMethod.POST,
                 requestEntity,
-                new ParameterizedTypeReference<Response<List<String>>>() {
-                });
-        return re.getBody().getData();
-    }
+                Response.class);
+        result = re.getBody();
 
+        return result;
+    }
 
 }
 

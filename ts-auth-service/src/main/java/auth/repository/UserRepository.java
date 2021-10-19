@@ -1,6 +1,6 @@
 package auth.repository;
 
-import auth.entity.User;
+import auth.entity.AuthUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
@@ -9,7 +9,7 @@ import java.util.UUID;
 /**
  * @author fdse
  */
-public interface UserRepository extends MongoRepository<User, String> {
+public interface UserRepository extends MongoRepository<AuthUser, String> {
 
     /**
      * find by username
@@ -17,7 +17,7 @@ public interface UserRepository extends MongoRepository<User, String> {
      * @param username username
      * @return Optional<User>
      */
-    Optional<User> findByUsername(String username);
+    Optional<AuthUser> findByUsername(String username);
 
     /**
      * delete by user id

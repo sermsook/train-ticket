@@ -3,7 +3,7 @@ package auth.service.impl;
 import auth.constant.AuthConstant;
 import auth.constant.InfoConstant;
 import auth.dto.AuthDto;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import auth.exception.UserOperationException;
 import auth.repository.UserRepository;
 import auth.service.UserService;
@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
     protected PasswordEncoder passwordEncoder;
 
     @Override
-    public User saveUser(User user) {
+    public AuthUser saveUser(AuthUser user) {
         return null;
     }
 
     @Override
-    public List<User> getAllUser(HttpHeaders headers) {
+    public List<AuthUser> getAllUser(HttpHeaders headers) {
         return userRepository.findAll();
     }
 
@@ -54,9 +54,9 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User createDefaultAuthUser(AuthDto dto) {
+    public AuthUser createDefaultAuthUser(AuthDto dto) {
         LOGGER.info("Register User Info is:  " + dto.getUserName());
-        User user = User.builder()
+        AuthUser user = AuthUser.builder()
                 .userId(UUID.fromString(dto.getUserId()))
                 .username(dto.getUserName())
                 .password(passwordEncoder.encode(dto.getPassword()))
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
      *
      * @param user
      */
-    private void checkUserCreateInfo(User user) {
+    private void checkUserCreateInfo(AuthUser user) {
         List<String> infos = new ArrayList<>();
 
         if (null == user.getUsername() || "".equals(user.getUsername())) {

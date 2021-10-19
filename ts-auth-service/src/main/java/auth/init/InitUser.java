@@ -1,6 +1,6 @@
 package auth.init;
 
-import auth.entity.User;
+import auth.entity.AuthUser;
 import auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,9 +26,9 @@ public class InitUser implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        User whetherExistUser = userRepository.findByUsername("fdse_microservice").orElse(new User());
+        AuthUser whetherExistUser = userRepository.findByUsername("fdse_microservice").orElse(new AuthUser());
         if (whetherExistUser.getUsername() == null) {
-            User user = User.builder()
+            AuthUser user = AuthUser.builder()
                     .userId(UUID.fromString("4d2a46c7-71cb-4cf1-b5bb-b68406d9da6f"))
                     .username("fdse_microservice")
                     .password(passwordEncoder.encode("111111"))
@@ -37,9 +37,9 @@ public class InitUser implements CommandLineRunner {
             userRepository.save(user);
         }
 
-        User whetherExistAdmin = userRepository.findByUsername("admin").orElse(new User());
+        AuthUser whetherExistAdmin = userRepository.findByUsername("admin").orElse(new AuthUser());
         if (whetherExistAdmin.getUsername() == null) {
-            User admin = User.builder()
+            AuthUser admin = AuthUser.builder()
                     .userId(UUID.randomUUID())
                     .username("admin")
                     .password(passwordEncoder.encode("222222"))

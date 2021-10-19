@@ -85,12 +85,10 @@ public class ContactsController {
         return ok(contactsService.findContactsById(UUID.fromString(id), headers));
     }
 
-
     @CrossOrigin(origins = "*")
-    @GetMapping(path = "/api/v1/test/hardCodeEndpoint")
-    public HttpEntity hardCodeEndpoint(@RequestHeader HttpHeaders headers) {
-        return ok(contactsService.stationServiceStationsName("name", headers));
+    @GetMapping(path = "/api/v1/test")
+    public HttpEntity testHardCode(@RequestHeader HttpHeaders headers) {
+        return ok(contactsService.getAllStationList(headers));
     }
-
 
 }

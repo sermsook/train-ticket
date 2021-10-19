@@ -1,7 +1,7 @@
 package auth.service;
 
 import auth.dto.BasicAuthDto;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import auth.exception.UserOperationException;
 import auth.repository.UserRepository;
 import auth.security.jwt.JWTProvider;
@@ -65,8 +65,8 @@ public class TokenServiceImplTest {
     @Test
     public void testGetToken2() throws UserOperationException {
         BasicAuthDto dto = new BasicAuthDto("username", null, "");
-        User user = new User();
-        Optional<User> optionalUser = Optional.of(user);
+        AuthUser user = new AuthUser();
+        Optional<AuthUser> optionalUser = Optional.of(user);
         Mockito.when(authenticationManager.authenticate(Mockito.any(UsernamePasswordAuthenticationToken.class))).thenReturn(null);
         Mockito.when(userRepository.findByUsername("username")).thenReturn(optionalUser);
         Mockito.when(jwtProvider.createToken(user)).thenReturn("token");

@@ -383,3 +383,120 @@ spec:
         host: ts-admin-user-service
         port:
           number: 16115
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway
+      route:
+        - destination:
+            host: ts-test-api-gateway-service
+            port:
+              number: 20000
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway2
+      route:
+        - destination:
+            host: ts-test-api-gateway-2-service
+            port:
+              number: 20001
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway3
+      route:
+        - destination:
+            host: ts-test-api-gateway-3-service
+            port:
+              number: 20002
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway4
+      route:
+        - destination:
+            host: ts-test-api-gateway-4-service
+            port:
+              number: 20003
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway5
+      route:
+        - destination:
+            host: ts-test-api-gateway-5-service
+            port:
+              number: 20004
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway6
+      route:
+        - destination:
+            host: ts-test-api-gateway-6-service
+            port:
+              number: 20005
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway7
+      route:
+        - destination:
+            host: ts-test-api-gateway-7-service
+            port:
+              number: 20006
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway8
+      route:
+        - destination:
+            host: ts-test-api-gateway-8-service
+            port:
+              number: 20007
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway9
+      route:
+        - destination:
+            host: ts-test-api-gateway-9-service
+            port:
+              number: 20008
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway10
+      route:
+        - destination:
+            host: ts-test-api-gateway-10-service
+            port:
+              number: 20009
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway11
+      route:
+        - destination:
+            host: ts-test-api-gateway-11-service
+            port:
+              number: 20010
+
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway12
+      route:
+        - destination:
+            host: ts-test-api-gateway-12-service
+            port:
+              number: 20011
+
+
+
+
+
+
+
+
+
+

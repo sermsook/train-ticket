@@ -1,7 +1,7 @@
 package auth.service;
 
 import auth.dto.AuthDto;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import edu.fudan.common.util.Response;
 import org.springframework.http.HttpHeaders;
 
@@ -19,7 +19,7 @@ public interface UserService {
      * @param user user
      * @return user
      */
-    User saveUser(User user);
+    AuthUser saveUser(AuthUser user);
 
     /**
      * get all users
@@ -27,7 +27,7 @@ public interface UserService {
      * @param headers headers
      * @return List<User>
      */
-    List<User> getAllUser(HttpHeaders headers);
+    List<AuthUser> getAllUser(HttpHeaders headers);
 
     /**
      * create default auth user
@@ -35,7 +35,7 @@ public interface UserService {
      * @param dto dto
      * @return user
      */
-    User createDefaultAuthUser(AuthDto dto);
+    AuthUser createDefaultAuthUser(AuthDto dto);
 
     /**
      * delete by user id

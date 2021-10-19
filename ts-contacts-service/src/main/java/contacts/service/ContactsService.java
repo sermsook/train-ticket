@@ -74,6 +74,6 @@ public interface ContactsService {
      */
     Response findContactsByAccountId(UUID accountId, HttpHeaders headers);
 
-    List<String> stationServiceStationsName(String stationName, HttpHeaders headers);
+    Response getAllStationList(HttpHeaders headers);
 
 }

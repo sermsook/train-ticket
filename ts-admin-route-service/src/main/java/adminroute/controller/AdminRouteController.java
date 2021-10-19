@@ -1,6 +1,6 @@
 package adminroute.controller;
 
-import adminroute.entity.RouteInfo;
+import adminroute.entity.AdminRouteInfo;
 import adminroute.service.AdminRouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -31,7 +31,7 @@ public class AdminRouteController {
     }
 
     @PostMapping(value = "/adminroute")
-    public HttpEntity addRoute(@RequestBody RouteInfo request, @RequestHeader HttpHeaders headers) {
+    public HttpEntity addRoute(@RequestBody AdminRouteInfo request, @RequestHeader HttpHeaders headers) {
         return ok(adminRouteService.createAndModifyRoute(request, headers));
     }
 

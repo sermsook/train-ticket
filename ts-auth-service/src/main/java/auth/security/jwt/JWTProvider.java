@@ -1,7 +1,7 @@
 package auth.security.jwt;
 
 import auth.constant.InfoConstant;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -26,7 +26,7 @@ public class JWTProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(User user) {
+    public String createToken(AuthUser user) {
 
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put(InfoConstant.ROLES, user.getRoles());

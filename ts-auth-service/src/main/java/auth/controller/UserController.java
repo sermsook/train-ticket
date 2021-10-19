@@ -2,7 +2,7 @@ package auth.controller;
 
 
 import auth.dto.BasicAuthDto;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import auth.service.TokenService;
 import auth.service.UserService;
 import edu.fudan.common.util.Response;
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUser(@RequestHeader HttpHeaders headers) {
+    public ResponseEntity<List<AuthUser>> getAllUser(@RequestHeader HttpHeaders headers) {
         return ResponseEntity.ok().body(userService.getAllUser(headers));
     }
 

@@ -1,0 +1,11 @@
+# HTTP Server
+server:
+  port: 20011  # HTTP (Tomcat) port
+
+spring:
+  application:
+    name: ts-test-api-gateway-12-service
+
+
+swagger:
+  controllerPackage: travelplan.controller

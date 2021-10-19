@@ -3,7 +3,7 @@ package auth.service.impl;
 import auth.constant.InfoConstant;
 import auth.dto.BasicAuthDto;
 import auth.dto.TokenDto;
-import auth.entity.User;
+import auth.entity.AuthUser;
 import auth.exception.UserOperationException;
 import auth.repository.UserRepository;
 import auth.security.jwt.JWTProvider;
@@ -74,7 +74,7 @@ public class TokenServiceImpl implements TokenService {
             return new Response<>(0, "Incorrect username or password.", null);
         }
 
-        User user = userRepository.findByUsername(username)
+        AuthUser user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserOperationException(MessageFormat.format(
                         InfoConstant.USER_NAME_NOT_FOUND_1, username
                 )));

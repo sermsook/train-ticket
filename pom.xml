@@ -53,6 +53,18 @@
         <module>ts-common</module>
         <module>ts-auth-service</module>
 		<module>ts-user-service</module>
+		<module>ts-test-api-gateway-service</module>
+		<module>ts-test-api-gateway-2-service</module>
+		<module>ts-test-api-gateway-3-service</module>
+		<module>ts-test-api-gateway-4-service</module>
+		<module>ts-test-api-gateway-5-service</module>
+		<module>ts-test-api-gateway-6-service</module>
+		<module>ts-test-api-gateway-7-service</module>
+		<module>ts-test-api-gateway-8-service</module>
+		<module>ts-test-api-gateway-9-service</module>
+		<module>ts-test-api-gateway-10-service</module>
+		<module>ts-test-api-gateway-11-service</module>
+		<module>ts-test-api-gateway-12-service</module>
 		<!--<module>ts-ticket-advance-service</module>-->
 		<!--<module>1_services_analysis_mvn</module>-->
     </modules>

@@ -1,7 +1,7 @@
 package adminroute.service;
 
-import adminroute.entity.Route;
-import adminroute.entity.RouteInfo;
+import adminroute.entity.AdminRoute;
+import adminroute.entity.AdminRouteInfo;
 import edu.fudan.common.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -34,14 +34,14 @@ public class AdminRouteServiceImpl implements AdminRouteService {
     }
 
     @Override
-    public Response createAndModifyRoute(RouteInfo request, HttpHeaders headers) {
+    public Response createAndModifyRoute(AdminRouteInfo request, HttpHeaders headers) {
 
         HttpEntity requestEntity = new HttpEntity(request, headers);
-        ResponseEntity<Response<Route>> re = restTemplate.exchange(
+        ResponseEntity<Response<AdminRoute>> re = restTemplate.exchange(
                 "http://ts-route-service:11178/api/v1/routeservice/routes",
                 HttpMethod.POST,
                 requestEntity,
-                new ParameterizedTypeReference<Response<Route>>() {
+                new ParameterizedTypeReference<Response<AdminRoute>>() {
                 });
         return re.getBody();
     }

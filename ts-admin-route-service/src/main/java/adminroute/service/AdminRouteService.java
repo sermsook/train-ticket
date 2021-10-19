@@ -1,6 +1,6 @@
 package adminroute.service;
 
-import adminroute.entity.RouteInfo;
+import adminroute.entity.AdminRouteInfo;
 import edu.fudan.common.util.Response;
 import org.springframework.http.HttpHeaders;
 
@@ -24,7 +24,7 @@ public interface AdminRouteService {
      * @param headers headers
      * @return Response
      */
-    Response createAndModifyRoute(RouteInfo request, HttpHeaders headers);
+    Response createAndModifyRoute(AdminRouteInfo request, HttpHeaders headers);
 
     /**
      * get all routes with headers
