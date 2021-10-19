@@ -509,6 +509,102 @@ services:
     networks:
       - my-network
 
+  ts-test-api-gateway-service:
+    image: codewisdom/ts-test-api-gateway-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20000:20000
+    networks:
+      - my-network
+
+  ts-test-api-gateway-2-service:
+    image: codewisdom/ts-test-api-gateway-2-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20001:20001
+    networks:
+      - my-network
+
+  ts-test-api-gateway-3-service:
+    image: codewisdom/ts-test-api-gateway-3-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20002:20002
+    networks:
+      - my-network
+
+  ts-test-api-gateway-4-service:
+    image: codewisdom/ts-test-api-gateway-4-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20003:20003
+    networks:
+      - my-network
+
+  ts-test-api-gateway-5-service:
+    image: codewisdom/ts-test-api-gateway-5-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20004:20004
+    networks:
+      - my-network
+
+  ts-test-api-gateway-6-service:
+    image: codewisdom/ts-test-api-gateway-6-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20005:20005
+    networks:
+      - my-network
+
+  ts-test-api-gateway-7-service:
+    image: codewisdom/ts-test-api-gateway-7-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20006:20006
+    networks:
+      - my-network
+
+  ts-test-api-gateway-8-service:
+    image: codewisdom/ts-test-api-gateway-8-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20007:20007
+    networks:
+      - my-network
+
+  ts-test-api-gateway-9-service:
+    image: codewisdom/ts-test-api-gateway-9-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20008:20008
+    networks:
+      - my-network
+
+  ts-test-api-gateway-10-service:
+    image: codewisdom/ts-test-api-gateway-10-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20009:20009
+    networks:
+      - my-network
+
+  ts-test-api-gateway-11-service:
+    image: codewisdom/ts-test-api-gateway-11-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20010:20010
+    networks:
+      - my-network
+
+  ts-test-api-gateway-12-service:
+    image: codewisdom/ts-test-api-gateway-12-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20011:20011
+    networks:
+      - my-network
+
   jaeger:
     image: jaegertracing/all-in-one:1.15
     ports:

@@ -1,0 +1,11 @@
+# HTTP Server
+server:
+  port: 20004  # HTTP (Tomcat) port
+
+spring:
+  application:
+    name: ts-test-api-gateway-5-service
+
+
+swagger:
+  controllerPackage: travelplan.controller

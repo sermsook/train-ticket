@@ -1,0 +1,11 @@
+# HTTP Server
+server:
+  port: 20006  # HTTP (Tomcat) port
+
+spring:
+  application:
+    name: ts-test-api-gateway-7-service
+
+
+swagger:
+  controllerPackage: travelplan.controller
