@@ -605,6 +605,14 @@ services:
     networks:
       - my-network
 
+  ts-test-api-gateway-13-service:
+    image: codewisdom/ts-test-api-gateway-13-service-with-jaeger:v1
+    restart: always
+    ports:
+      - 20012:20012
+    networks:
+      - my-network
+
   jaeger:
     image: jaegertracing/all-in-one:1.15
     ports:

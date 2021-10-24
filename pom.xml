@@ -65,6 +65,7 @@
 		<module>ts-test-api-gateway-10-service</module>
 		<module>ts-test-api-gateway-11-service</module>
 		<module>ts-test-api-gateway-12-service</module>
+		<module>ts-test-api-gateway-13-service</module>
 		<!--<module>ts-ticket-advance-service</module>-->
 		<!--<module>1_services_analysis_mvn</module>-->
     </modules>
