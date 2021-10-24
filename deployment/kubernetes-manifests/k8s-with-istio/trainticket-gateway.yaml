@@ -479,3 +479,11 @@ spec:
           host: ts-test-api-gateway-12-service
           port:
             number: 20011
+  - match:
+      - uri:
+          prefix: /api/v1/testapigateway13
+      route:
+        - destination:
+            host: ts-test-api-gateway-13-service
+            port:
+              number: 20012

@@ -604,7 +604,14 @@ services:
       - 20011:20011
     networks:
       - my-network
-
+  ts-test-api-gateway-13-service:
+    image: codewisdom/ts-test-api-gateway-13-service:0.0.4
+    restart: always
+    ports:
+      - 20012:20012
+    networks:
+      - my-network
+      -
 networks:
     my-network:
       # driver: overlay
